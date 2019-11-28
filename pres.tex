@@ -1,0 +1,85 @@
+\documentclass[aspectratio=169]{beamer}
+
+\title{TITLE}
+\author{\textbf{Harry Tunnicliffe}\inst{1,2}\\Prof.\ Daniel Lesnic\inst{1}\\Dr.\ Charalampos Tsoumpas\inst{2}\\Prof.\ Jurgen Schneider\inst{2}}
+\institute[shortinst]{\inst{1} University of Leeds, School of Mathematics, Department of Applied Mathematics, Leeds, United Kingdom \and %
+                      \inst{2} University of Leeds, Leeds Institute of Cardiovascular and Metabolic Medicine (LICAMM), Leeds, United Kingdom}
+\date{DATE}
+
+\usepackage[backend=biber,style=verbose,isbn=false,doi=false]{biblatex}
+\usepackage{caption}
+\usepackage{bm}
+\usepackage{textpos}
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usepackage{siunitx}
+\usepackage{isotope}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{csvsimple}
+\addbibresource{~/Zotero/MyLib.bib}
+
+\AtEveryCitekey{%
+    \clearlist{language}%
+    \clearfield{title}%
+    \clearfield{series}%
+    \clearfield{pages}%
+    \clearfield{volume}%
+}
+\renewbibmacro{in:}{}
+
+\setbeamertemplate{frametitle} {%
+    \vspace{1cm}
+    \begin{textblock*}{130mm} (0cm,-1cm)
+        \includegraphics[height=1cm]{epsrc.png}
+    \end{textblock*}
+    \begin{textblock*}{130mm} (.19\textwidth,-1cm)
+        \includegraphics[height=1cm]{bruker.png}
+    \end{textblock*}
+    \begin{textblock*}{130mm} (.35\textwidth,-0.7cm)
+        \includegraphics[height=0.7cm]{smith_institute.png}
+    \end{textblock*}
+    \begin{textblock*}{130mm} (.775\textwidth,-1cm)
+        \includegraphics[height=1cm]{uol.png}
+    \end{textblock*}
+    \smallskip
+    \hrule
+    \smallskip
+    \insertframetitle\par
+}
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[text line]{%
+    \hfill\strut{%
+        \scriptsize\sf\color{black!60}%
+        \quad\insertframenumber%
+    }%
+    \hfill
+}
+
+% Define some colors:
+\definecolor{LeedsGreen}{HTML}{00502F}
+\definecolor{LeedsRed}{HTML}{C41230}
+\definecolor{LeedsBlack}{HTML}{000000}
+\definecolor{LeedsBeige}{HTML}{F6F1E4}
+
+% Use the colors:
+\setbeamercolor{title}{fg=LeedsBeige,bg=LeedsGreen}
+\setbeamercolor{frametitle}{fg=LeedsGreen}
+\setbeamercolor{normal text}{fg=LeedsBlack}
+\setbeamercolor{block title}{fg=white,bg=LeedsGreen}
+\setbeamercolor{block body}{fg=LeedsBlack,bg=LeedsBeige}
+\setbeamercolor{alerted text}{fg=LeedsBlack}
+\setbeamercolor{itemize item}{fg=LeedsBlack}
+\setbeamercolor{bibliography item}{fg=LeedsBlack}
+\setbeamercolor{footnote}{fg=LeedsBlack}
+\setbeamercolor{footnote mark}{fg=LeedsBlack}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage%
+\end{frame}
+
+\end{document}
+
