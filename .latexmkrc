@@ -1,3 +1,4 @@
+# Search for files in ./figs and its subdirectories
 ensure_path('TEXINPUTS','./figs//');
 
 # Always treat bbl files as regeneratable (can be cleaned up).
@@ -9,5 +10,21 @@ sub svg2pdf {
     system("echo $_[0]; inkscape -D -z --file=$_[0].svg --export-pdf=$_[0].pdf --export-latex");
 }
 
-push @generated_exts, 'pdf_tex', 'nav', 'run.xml', 'snm';
+# https://tex.stackexchange.com/a/44316/194524 - make glossaries
+add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
+add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
 
+sub run_makeglossaries {
+  if ( $silent ) {
+    system "makeglossaries -q '$_[0]'";
+  }
+  else {
+    system "makeglossaries '$_[0]'";
+  };
+}
+
+push @generated_exts, 'glo', 'gls', 'glg';
+push @generated_exts, 'acn', 'acr', 'alg';
+push @generated_exts, 'pdf_tex', 'nav', 'run.xml', 'snm';
+$clean_ext .= ' %R.ist %R.xdy';
+$clean_ext .= ' %R.bbl %R.run.xml';
